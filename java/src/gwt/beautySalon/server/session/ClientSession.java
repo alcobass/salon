@@ -22,7 +22,7 @@ public class ClientSession {
 
         try {
             List<Client> clientList = (List<Client>) session
-                    .selectList("Client.getAll");
+                    .selectList("client.getAll");
             return clientList;
         } finally {
             session.close();

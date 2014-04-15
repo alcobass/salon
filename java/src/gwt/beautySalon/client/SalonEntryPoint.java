@@ -14,6 +14,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -71,16 +72,32 @@ public class SalonEntryPoint implements EntryPoint {
         PushButton receptionButton = new PushButton();
         receptionButton.setText("Ресепшен");       
         PushButton documentButton = new PushButton();
-        receptionButton.setText("Документы");
+        documentButton.setText("Документы");
         PushButton priceListButton = new PushButton();
-        receptionButton.setText("Прайс-лист");
+        priceListButton.setText("Прайс-лист");
         
         menuPanel.add(receptionButton);
         menuPanel.add(documentButton);
         menuPanel.add(priceListButton);
-
-        SimplePanel contentPanel = new SimplePanel();
         
+       // menuPanel.setStyleName("panel");
+
+        HorizontalPanel contentPanel = new HorizontalPanel();
+        
+        SimplePanel shortListClientPanel = new SimplePanel();    
+        Label textLabel = new Label("Здесь список с короткими данными");
+        shortListClientPanel.setStyleName("panel");
+        shortListClientPanel.setWidth("450px");
+        shortListClientPanel.setWidget(textLabel);
+               
+        SimplePanel registrationPanel = new SimplePanel();
+        Label textLabe2 = new Label("Здесь редактирование данных о клиенте, запись");    
+        registrationPanel.setStyleName("panel"); 
+        registrationPanel.setWidth("886px");
+        registrationPanel.add(textLabe2);
+        
+        contentPanel.add(shortListClientPanel);
+        contentPanel.add(registrationPanel);
         RootPanel.get().add(menuPanel);
         RootPanel.get().add(contentPanel);
     }

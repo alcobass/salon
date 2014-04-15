@@ -22,7 +22,7 @@ public class ServiceSubtypeSession {
 
         try {
             List<ServiceSubtype> serviceSubtypeList = (List<ServiceSubtype>) session
-                    .selectList("ServiceSubtype.getAll");
+                    .selectList("serviceSubtype.getAll");
             return serviceSubtypeList;
         } finally {
             session.close();

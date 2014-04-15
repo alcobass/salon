@@ -22,7 +22,7 @@ public class RegistrationSession {
 
         try {
             List<Registration> registrationList = (List<Registration>) session
-                    .selectList("payment.getAll");
+                    .selectList("registration.getAll");
             return registrationList;
         } finally {
             session.close();

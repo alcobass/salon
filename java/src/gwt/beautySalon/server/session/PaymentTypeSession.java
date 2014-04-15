@@ -20,7 +20,7 @@ public class PaymentTypeSession {
 
         try {
             List<PaymentType> paymentTypeList = (List<PaymentType>) session
-                    .selectList("PaymentType.getAll");
+                    .selectList("paymentType.getAll");
             return paymentTypeList;
         } finally {
             session.close();

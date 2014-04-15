@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="registration">
+
+	<resultMap id="result" type="Registration">
+		<id property="id" column="ID" />
+		<!-- <result property="client" column="CLIENT_ID" /> -->
+		<result property="serviseSubtypeId" column="SERVICE_SUBTYPE_ID" />
+		<result property="data" column="DATE_SERVICE" />
+		<result property="time" column="TIME_SERVICE" />
+
+		<association property="client" javaType="Client">
+			<id property="id" column="ID" />
+			<result property="firstName" column="FIRST_NAME" />
+			<result property="midName" column="MID_NAME" />
+			<result property="lastName" column="LAST_NAME" />
+			<result property="birthday" column="BIRTHDAY" />
+			<result property="telephone" column="TELEPHONE" />
+		</association>
+	</resultMap>
+
+	<select id="getAll" resultMap="result">
+		SELECT reg.ID,
+		       reg.SERVICE_SUBTYPE_ID,
+		       reg.DATE_SERVICE,
+		       reg.TIME_SERVICE,
+		       cl.ID,
+		       cl.FIRST_NAME,
+		       cl.MID_NAME,
+		       cl.LAST_NAME,
+		       cl.BIRTHDAY,
+		       cl.TELEPHONE
+		FROM REGISTRATION AS reg 
+		     INNER JOIN CLIENT AS cl ON reg.CLIENT_ID = cl.ID;
+	</select>
+
+</mapper>

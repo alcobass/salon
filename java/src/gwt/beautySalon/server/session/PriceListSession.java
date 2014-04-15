@@ -21,7 +21,7 @@ public class PriceListSession {
 
         try {
             List<PriceList> priceList = (List<PriceList>) session
-                    .selectList("PriceList.getAll");
+                    .selectList("priceList.getAll");
             return priceList;
         } finally {
             session.close();

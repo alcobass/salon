@@ -6,14 +6,14 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="PriceList" type="gwt.beautySalon.shared.PriceList" />
-		<typeAlias alias="ServiceType" type="gwt.beautySalon.shared.ServiceType" />
-		<typeAlias alias="ServiceSubtype" type="gwt.beautySalon.shared.ServiceSubtype" />
-		<typeAlias alias="PaymentType" type="gwt.beautySalon.shared.PaymentType" />
-		<typeAlias alias="PaymentMethod" type="gwt.beautySalon.shared.PaymentMethod" />
-		<typeAlias alias="Client" type="gwt.beautySalon.shared.Client" />
-		<typeAlias alias="Payment" type="gwt.beautySalon.shared.Payment" />
-		<typeAlias alias="Registration" type="gwt.beautySalon.shared.Registration" />
+		<typeAlias alias="priceList" type="gwt.beautySalon.shared.PriceList" />
+		<typeAlias alias="serviceType" type="gwt.beautySalon.shared.ServiceType" />
+		<typeAlias alias="serviceSubtype" type="gwt.beautySalon.shared.ServiceSubtype" />
+		<typeAlias alias="paymentType" type="gwt.beautySalon.shared.PaymentType" />
+		<typeAlias alias="paymentMethod" type="gwt.beautySalon.shared.PaymentMethod" />
+		<typeAlias alias="client" type="gwt.beautySalon.shared.Client" />
+		<typeAlias alias="payment" type="gwt.beautySalon.shared.Payment" />
+		<typeAlias alias="registration" type="gwt.beautySalon.shared.Registration" />
 	</typeAliases>
 
 	<environments default="development">
@@ -29,14 +29,14 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="gwt/beautySalon/server/xml/PriceList.xml" />
-		<mapper resource="gwt/beautySalon/server/xml/ServiceType.xml" />
-		<mapper resource="gwt/beautySalon/server/xml/ServiceSubtype.xml" />
-		<mapper resource="gwt/beautySalon/server/xml/PaymentType.xml" />
-		<mapper resource="gwt/beautySalon/server/xml/PaymentMethod.xml" />
-		<mapper resource="gwt/beautySalon/server/xml/Client.xml" />
-		<mapper resource="gwt/beautySalon/server/xml/Payment.xml" />
-		<mapper resource="gwt/beautySalon/server/xml/Registration.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/PriceListMapper.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/ServiceTypeMapper.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/ServiceSubtypeMapper.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/PaymentTypeMapper.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/PaymentMethodMapper.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/ClientMapper.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/PaymentMapper.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/RegistrationMapper.xml" />
 	</mappers>
 
 </configuration>

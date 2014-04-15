@@ -22,7 +22,7 @@ public class PaymentMethodSession {
 
         try {
             List<PaymentMethod> paymentMethodList = (List<PaymentMethod>) session
-                    .selectList("PaymentMethod.getAll");
+                    .selectList("paymentMethod.getAll");
             return paymentMethodList;
         } finally {
             session.close();
