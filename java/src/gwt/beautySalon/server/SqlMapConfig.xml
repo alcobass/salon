@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="PriceList" type="gwt.beautySalon.shared.PriceList" />
+		<typeAlias alias="ServiceType" type="gwt.beautySalon.shared.ServiceType" />
+		<typeAlias alias="ServiceSubtype" type="gwt.beautySalon.shared.ServiceSubtype" />
+		<typeAlias alias="PaymentType" type="gwt.beautySalon.shared.PaymentType" />
+		<typeAlias alias="PaymentMethod" type="gwt.beautySalon.shared.PaymentMethod" />
+		<typeAlias alias="Client" type="gwt.beautySalon.shared.Client" />
+		<typeAlias alias="Payment" type="gwt.beautySalon.shared.Payment" />
+		<typeAlias alias="Registration" type="gwt.beautySalon.shared.Registration" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/BEAUTY_SALON" />
+				<property name="username" value="root" />
+				<property name="password" value="tantema" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="gwt/beautySalon/server/xml/PriceList.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/ServiceType.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/ServiceSubtype.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/PaymentType.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/PaymentMethod.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/Client.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/Payment.xml" />
+		<mapper resource="gwt/beautySalon/server/xml/Registration.xml" />
+	</mappers>
+
+</configuration>
