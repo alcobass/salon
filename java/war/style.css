@@ -1,0 +1,25 @@
+body {
+  background-image: url('backgroundGrey.gif');
+  margin: 0px;
+  padding: 5px;
+}
+.panel {
+  border: 2px solid black;
+  background: #FAF0E6;
+  height: 600px;
+  opacity: 0.7;
+}
+.gwt-PushButton-up,
+.gwt-PushButton-up-hovering,
+.gwt-PushButton-up-disabled,
+.gwt-PushButton-down,
+.gwt-PushButton-down-hovering,
+.gwt-PushButton-down-disabled {
+  border: 1px dotted #151567;
+  background: linear-gradient(to top, #cccccc, #ffffff);
+  color: #000000;
+  width: 75px;
+  padding: 5px;
+  text-align: center;
+  width: 120px;
+}

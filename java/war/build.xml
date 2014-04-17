@@ -1,0 +1,29 @@
+<project name="gwt.clientpriem" default="less">
+	
+<property name="css.dir" location=""/>
+<property name="tool.less" location="less-rhino-1.1.3.js"/>
+<property name="tool.rhino" location="js.jar"/>
+
+<target name="less" description="Convert LESS to CSS then concatenate and Minify any stylesheets">
+        <echo message="Converting LESS to CSS..."/>
+        <!-- Clear the former compiled css files -->
+        <delete includeemptydirs="true">
+            <fileset dir="${css.dir}" includes="*.css, **/*.css" defaultexcludes="false" excludes="gxt-gray.css, gxt-all.css" />
+        </delete>
+
+        <apply dir="${css.dir}" executable="java" parallel="false" failonerror="true">
+            <!-- Give the input bundle of less files-->
+            <fileset dir="${css.dir}">
+                <include name="style.less"/>
+            </fileset>
+            <arg value="-jar" />
+            <arg path="${tool.rhino}" />
+            <arg path="${tool.less}" />
+            <srcfile/>
+            <!-- Output the compiled css file with corresponding name -->
+            <mapper type="glob" from="*.less" to="${css.dir}/*.css"/>
+            <targetfile/>
+        </apply>
+</target>
+
+</project>
