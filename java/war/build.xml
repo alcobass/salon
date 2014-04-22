@@ -2,7 +2,7 @@
 	
 <property name="css.dir" location=""/>
 <property name="tool.less" location="less-rhino-1.1.3.js"/>
-<property name="tool.rhino" location="js.jar"/>
+<property name="tool.rhino" location="WEB-INF/lib/js.jar"/>
 
 <target name="less" description="Convert LESS to CSS then concatenate and Minify any stylesheets">
         <echo message="Converting LESS to CSS..."/>

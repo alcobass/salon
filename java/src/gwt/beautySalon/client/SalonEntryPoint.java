@@ -1,5 +1,7 @@
 package gwt.beautySalon.client;
 
+import gwt.beautySalon.client.tables.PriceListDataSource;
+import gwt.beautySalon.client.tables.TablePriceList;
 import gwt.beautySalon.shared.PaymentMethod;
 import gwt.beautySalon.shared.PaymentType;
 import gwt.beautySalon.shared.PriceList;
@@ -15,6 +17,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
+import com.google.gwt.user.client.ui.HTMLTable.Cell;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PushButton;
@@ -33,6 +36,8 @@ public class SalonEntryPoint implements EntryPoint {
     List<ServiceSubtype> serviceSubtypeList;
     List<PaymentType> paymentTypeList;
     List<PaymentMethod> paymentMethodList;
+    private int selectedRow = 0;
+    private int previousRow;
 
     @Override
     public void onModuleLoad() {
@@ -44,7 +49,7 @@ public class SalonEntryPoint implements EntryPoint {
         serviceDef.setServiceEntryPoint(GWT.getModuleBaseURL() + "salon");
 
         loadData();
-        loadInterface();
+
     }
 
     public void loadData() {
@@ -66,6 +71,7 @@ public class SalonEntryPoint implements EntryPoint {
                 paymentMethodList = (List<PaymentMethod>) result.get("paymentMethod");
                 System.out.println("ok");
 
+                loadInterface();
             }
         });
     }
@@ -73,23 +79,24 @@ public class SalonEntryPoint implements EntryPoint {
     public void loadInterface() {
         HorizontalPanel menuPanel = new HorizontalPanel();
         menuPanel.ensureDebugId("menuPanel");
-        
+
         VerticalPanel contentPanel = new VerticalPanel();
         contentPanel.ensureDebugId("contentPanel");
-        
+
         final HorizontalPanel mainReceptionPanel = new HorizontalPanel();
         mainReceptionPanel.ensureDebugId("mainReceptionPanel");
         final HorizontalPanel mainPriceListPanel = new HorizontalPanel();
         mainPriceListPanel.ensureDebugId("mainPriceListPanel");
         final HorizontalPanel mainDocumentPanel = new HorizontalPanel();
         mainDocumentPanel.ensureDebugId("mainDocumentPanel");
-        
+
         mainReceptionPanel.setVisible(false);
         mainDocumentPanel.setVisible(false);
-             
+
         createPriceListPanel(mainPriceListPanel);
         createReceptionPanel(mainReceptionPanel);
-                     
+        createDocumentPanel(mainDocumentPanel);
+
         PushButton receptionButton = new PushButton("Ресепшен", new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -124,59 +131,71 @@ public class SalonEntryPoint implements EntryPoint {
         menuPanel.add(priceListButton);
         menuPanel.add(receptionButton);
         menuPanel.add(documentButton);
-       
+
         contentPanel.add(mainPriceListPanel);
         contentPanel.add(mainReceptionPanel);
         contentPanel.add(mainDocumentPanel);
-        
+
         RootPanel.get().add(menuPanel);
         RootPanel.get().add(contentPanel);
     }
 
-    public void createPriceListPanel (HorizontalPanel mainPanel) {
-        SimplePanel controlPriceListPanel = new SimplePanel();
-        controlPriceListPanel.setStyleName("panel");
-        controlPriceListPanel.setWidth("300px");
-        Label label5 = new Label("Панель для редактирования прайс-листа");
-        controlPriceListPanel.add(label5);
-        SimplePanel priceListPanel = new SimplePanel();
-        priceListPanel.setStyleName("panel");
-        priceListPanel.setWidth("900px");
-        Label label6 = new Label("Панель с прайс-листом");
-        priceListPanel.add(label6);
+    public void createPriceListPanel(HorizontalPanel mainPanel) {
         
+        HorizontalPanel controlPriceListPanel = new HorizontalPanel();
+        controlPriceListPanel.setStyleName("panelLeft");
+        Label addTypeService = new Label("Панель для редактирования прайс-листа");
+        controlPriceListPanel.add(addTypeService);
+
+        SimplePanel priceListPanel = new SimplePanel();
+        priceListPanel.setStyleName("panelRight");
+
+        PriceListDataSource priceListDataSource = new PriceListDataSource(serviceTypeList,
+                serviceSubtypeList, priceList);
+        final TablePriceList tablePriceList = new TablePriceList(priceListDataSource);
+        tablePriceList.createTablePriceList(/*priceListDataSource*/);
+
+        tablePriceList.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                // TODO Auto-generated method stub
+                previousRow = selectedRow;
+                Cell cell = tablePriceList.getCellForEvent(event);
+                selectedRow = cell.getRowIndex();
+                tablePriceList.isSelectedRow(selectedRow, previousRow);
+            }
+
+        });
+                 
+        priceListPanel.add(tablePriceList);
         mainPanel.add(controlPriceListPanel);
         mainPanel.add(priceListPanel);
     }
     
-    public void createReceptionPanel (HorizontalPanel mainPanel) {
+    public void createReceptionPanel(HorizontalPanel mainPanel) {
         SimplePanel shortRegistrationListPanel = new SimplePanel();
         Label textLabel = new Label("Здесь список с короткими данными");
-        shortRegistrationListPanel.setStyleName("panel");
-        shortRegistrationListPanel.setWidth("450px");
+        shortRegistrationListPanel.setStyleName("panelLeft");
         shortRegistrationListPanel.setWidget(textLabel);
         SimplePanel registrationPanel = new SimplePanel();
         Label textLabe2 = new Label("Здесь редактирование данных о клиенте, запись");
-        registrationPanel.setStyleName("panel");
-        registrationPanel.setWidth("886px");
+        registrationPanel.setStyleName("panelRight");
         registrationPanel.add(textLabe2);
-    
+
         mainPanel.add(shortRegistrationListPanel);
         mainPanel.add(registrationPanel);
     }
-    
+
     public void createDocumentPanel(HorizontalPanel mainPanel) {
         SimplePanel documentNamePanel = new SimplePanel();
-        documentNamePanel.setStyleName("panel");
-        documentNamePanel.setWidth("300px");
+        documentNamePanel.setStyleName("panelLeft");
         Label label3 = new Label("Здесь находится список отчетов");
         documentNamePanel.add(label3);
         SimplePanel docPanel = new SimplePanel();
-        docPanel.setStyleName("panel");
-        docPanel.setWidth("900px");
+        docPanel.setStyleName("panelRight");
         Label label4 = new Label("Здесь отражается выбранный отчет");
         docPanel.add(label4);
-        
+
         mainPanel.add(documentNamePanel);
         mainPanel.add(docPanel);
     }
