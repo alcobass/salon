@@ -2,6 +2,8 @@ body {
   margin: 0px;
   padding: 5px;
   background: url('wild_flowers.png');
+  font-size: small;
+  font-family: Arial;
 }
 .textAlignCenter {
   text-align: center;
@@ -10,11 +12,13 @@ body {
   background: rgba(51, 51, 51, 0.35);
   height: 800px;
   padding: 5px;
+  border-radius: 2px;
 }
 .panelLeft {
   background: rgba(51, 51, 51, 0.35);
   height: 800px;
   padding: 5px;
+  border-radius: 2px;
   margin-right: 2px;
   width: 400px;
 }
@@ -22,7 +26,20 @@ body {
   background: rgba(51, 51, 51, 0.35);
   height: 800px;
   padding: 5px;
+  border-radius: 2px;
   width: 1485px;
+}
+.headerButton {
+  border-left: 1px dotted #cccccc;
+  border-right: 1px dotted #cccccc;
+  border-top: 1px dotted #cccccc;
+  width: 120px;
+  font-size: 14px;
+}
+.dialogButton {
+  border: 1px solid #cccccc;
+  width: 60px;
+  margin-left: 22px;
 }
 .gwt-PushButton-up,
 .gwt-PushButton-up-hovering,
@@ -30,34 +47,77 @@ body {
 .gwt-PushButton-down,
 .gwt-PushButton-down-hovering,
 .gwt-PushButton-down-disabled {
-  border-left: 1px dotted #151567;
-  border-right: 1px dotted #151567;
-  border-top: 1px dotted #151567;
-  background: linear-gradient(to top, #cccccc, #ffffff);
+  background: linear-gradient(to top, #dddddd, #ffffff);
   color: #000000;
-  width: 120px;
   padding: 5px;
   text-align: center;
+}
+.gwt-PushButton-up-disabled {
+  background: #ddd;
+  color: #666;
 }
 .tablePriceList {
   border-collapse: collapse;
   width: 100%;
 }
+.tablePriceList td {
+  padding: 3px;
+  padding-left: 15px;
+}
 .headerTablePriceList {
   background: #bbbbbb;
   text-align: center;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
-.typeRowTablePriceList {
+.serviceTypeRow {
   background: #fadadd;
   text-align: center;
 }
 .oddRow {
   background: rgba(236, 236, 236, 0.63);
+  font-weight: normal;
 }
 .evenRow {
   background: rgba(250, 218, 221, 0.63);
+  font-weight: normal;
 }
 .selectedRow {
-  background: #aaa;
+  background: #999;
   color: #fff;
+  font-weight: bold;
+}
+.gwt-DialogBox {
+  border: 2px solid #bbbbbb;
+  background: #ececec;
+  border-radius: 5px;
+}
+.gwt-DialogBox .dialogTop {
+  background: #bbb;
+  text-align: center;
+}
+.gwt-DialogBox .dialogContent {
+  padding: 5px;
+}
+.label {
+  font-size: 14px;
+  text-decoration: underline;
+}
+.labelLeftPanel {
+  color: #000000;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.disabledLabelLeftPanel {
+  color: #cccccc;
+  cursor: default;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.labelDialog {
+  margin-right: 5px;
+}
+.gwt-ListBox {
+  width: 143px;
 }
