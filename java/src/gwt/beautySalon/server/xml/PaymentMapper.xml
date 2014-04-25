@@ -5,7 +5,7 @@
 
 <mapper namespace="payment">
 
-	<resultMap id="result" type="Payment">
+	<resultMap id="resultPayment" type="Payment">
 		<id property="id" column="ID" />
 		<result property="paymentTypeId" column="PAYMENT_TYPE_ID" />
 		<result property="registrarionId" column="REGISTRATION_ID" />
@@ -13,7 +13,7 @@
 		<result property="sum" column="SUM" />
 	</resultMap>
 
-	<select id="getAll" resultMap="result">
+	<select id="getAll" resultMap="resultPayment">
 		SELECT ID,
 		       PAYMENT_TYPE_ID,
 		       REGISTRATION_ID,

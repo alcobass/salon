@@ -27,4 +27,38 @@ public class PriceListSession {
             session.close();
         }
     }
+
+    public void insertPriceList(PriceList priceList) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            session.insert("priceList.insert", priceList);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updatePriceList(PriceList priceList) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            session.insert("priceList.update", priceList);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void deletePriceList(int id) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            session.insert("priceList.delete", id);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
 }

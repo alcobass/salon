@@ -5,7 +5,7 @@
 
 <mapper namespace="registration">
 
-	<resultMap id="result" type="Registration">
+	<resultMap id="resultRegistration" type="Registration">
 		<id property="id" column="ID" />
 		<!-- <result property="client" column="CLIENT_ID" /> -->
 		<result property="serviseSubtypeId" column="SERVICE_SUBTYPE_ID" />
@@ -22,7 +22,7 @@
 		</association>
 	</resultMap>
 
-	<select id="getAll" resultMap="result">
+	<select id="getAll" resultMap="resultRegistration">
 		SELECT reg.ID,
 		       reg.SERVICE_SUBTYPE_ID,
 		       reg.DATE_SERVICE,

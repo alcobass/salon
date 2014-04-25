@@ -5,19 +5,37 @@
 
 <mapper namespace="serviceSubtype">
 
-	<resultMap id="result" type="ServiceSubtype">
+	<resultMap id="resultServiceSubtype" type="ServiceSubtype">
 		<id property="id" column="ID" />
 		<result property="serviceTypeId" column="SERVICE_TYPE_ID" />
 		<result property="name" column="NAME" />
 		<result property="time" column="TIME_SERVICE" />
 	</resultMap>
 
-	<select id="getAll" resultMap="result">
+	<select id="getAll" resultMap="resultServiceSubtype">
 		SELECT ID,
 		       SERVICE_TYPE_ID,
 		       NAME,
 		       TIME_SERVICE
 		FROM SERVICE_SUBTYPE;
 	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+	    INSERT INTO SERVICE_SUBTYPE (SERVICE_TYPE_ID, NAME, TIME_SERVICE)
+		VALUES (#{serviceTypeId}, #{name}, #{time});
+	</insert>
+	
+	<update id="update">
+	    UPDATE SERVICE_SUBTYPE SET
+	       SERVICE_TYPE_ID = #{serviceTypeId},
+	       NAME = #{name},
+	       TIME_SERVICE = #{time}
+	    WHERE id = #{id};
+	</update>
+	
+	<delete id="delete">
+	   DELETE FROM SERVICE_SUBTYPE
+	   WHERE id = #{id};
+	</delete>
 
 </mapper>

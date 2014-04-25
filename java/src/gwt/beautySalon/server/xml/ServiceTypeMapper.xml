@@ -5,15 +5,31 @@
 
 <mapper namespace="serviceType">
 
-	<resultMap id="result" type="ServiceType">
+	<resultMap id="resultServiceType" type="ServiceType">
 		<id property="id" column="ID" />
 		<result property="name" column="NAME" />
 	</resultMap>
 
-	<select id="getAll" resultMap="result">
+	<select id="getAll" resultMap="resultServiceType">
 		SELECT ID,
 		       NAME
 		FROM SERVICE_TYPE;
 	</select>
 
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO SERVICE_TYPE (NAME)
+		VALUES (#{name});
+	</insert>
+
+   <update id="update">
+      UPDATE SERVICE_TYPE SET
+         name = #{name}
+      WHERE id = #{id};
+   </update>
+   
+   <delete id="delete">
+      DELETE FROM SERVICE_TYPE
+      WHERE id = #{id};
+   </delete>
+   
 </mapper>

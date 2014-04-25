@@ -5,17 +5,34 @@
 
 <mapper namespace="priceList">
 
-	<resultMap id="result" type="PriceList">
+	<resultMap id="resultPriceList" type="PriceList">
 		<id property="id" column="ID" />
 		<result property="serviceSubtypeId" column="SERVICE_SUBTYPE_ID" />
 		<result property="cost" column="COST" />
 	</resultMap>
 
-	<select id="getAll" resultMap="result">
+	<select id="getAll" resultMap="resultPriceList">
 		SELECT ID,
 		       SERVICE_SUBTYPE_ID,
                COST
 		FROM PRICE_LIST;
 	</select>
+	
+	<insert id="insert">
+	   INSERT INTO PRICE_LIST (SERVICE_SUBTYPE_ID, COST)
+	   VALUES (#{serviceSubtypeId}, #{cost});
+	</insert>
+	
+	<update id="update">
+	   UPDATE PRICE_LIST SET 
+	      SERVICE_SUBTYPE_ID = #{serviceSubtypeId},
+	      COST = #{cost}
+	   WHERE id = #{id};
+	</update>
+	
+	<delete id="delete">
+	   DELETE FROM PRICE_LIST
+	   WHERE id = #{id};
+	</delete>
 
 </mapper>

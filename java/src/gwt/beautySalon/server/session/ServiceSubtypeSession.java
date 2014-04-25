@@ -28,4 +28,37 @@ public class ServiceSubtypeSession {
             session.close();
         }
     }
+
+    public void insertServiceSubtype(ServiceSubtype subtype) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            session.insert("serviceSubtype.insert", subtype);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateServiceSubtype(ServiceSubtype subtype) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            session.insert("serviceSubtype.update", subtype);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void deleteServiceSubtype(int id) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            session.insert("serviceSubtype.delete", id);
+            session.commit();
+        } finally {
+            session.close();
+        } 
+    }
 }

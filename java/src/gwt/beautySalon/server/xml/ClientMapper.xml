@@ -5,7 +5,7 @@
 
 <mapper namespace="client">
 
-	<resultMap id="result" type="Client">
+	<resultMap id="resultClient" type="Client">
 		<id property="id" column="ID" />
 		<result property="firstName" column="FIRST_NAME" />
 		<result property="midName" column="MID_NAME" />
@@ -14,7 +14,7 @@
 		<result property="telephone" column="TELEPHONE" />
 	</resultMap>
 
-	<select id="getAll" resultMap="result">
+	<select id="getAll" resultMap="resultClient">
 		SELECT ID,
 		       FIRST_NAME,
 		       MID_NAME,

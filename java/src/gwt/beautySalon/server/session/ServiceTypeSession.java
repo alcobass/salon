@@ -28,4 +28,37 @@ public class ServiceTypeSession {
             session.close();
         }
     }
+
+    public void insertServiceType(ServiceType newServiceType) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            session.insert("serviceType.insert", newServiceType);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void deleteServiceType(int id) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            session.delete("serviceType.delete", id);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateServicetype(ServiceType updateServiceType) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            session.delete("serviceType.update", updateServiceType);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
 }

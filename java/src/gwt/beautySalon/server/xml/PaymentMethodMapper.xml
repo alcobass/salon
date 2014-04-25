@@ -5,12 +5,12 @@
 
 <mapper namespace="paymentMethod">
 
-	<resultMap id="result" type="PaymentMethod">
+	<resultMap id="resultPaymentMethod" type="PaymentMethod">
 		<id property="id" column="ID" />
 		<result property="name" column="NAME" />
 	</resultMap>
 
-	<select id="getAll" resultMap="result">
+	<select id="getAll" resultMap="resultPaymentMethod">
 		SELECT ID,
 		       NAME
 		FROM PAYMENT_METHOD;

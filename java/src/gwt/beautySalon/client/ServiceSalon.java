@@ -7,6 +7,7 @@ import gwt.beautySalon.shared.ServiceSubtype;
 import gwt.beautySalon.shared.ServiceType;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -17,14 +18,25 @@ public interface ServiceSalon  extends RemoteService{
 
     Map<String, Object> loadDictionaryData();
     
-    ArrayList<PriceList> selectPriceList_null();
+    List<ServiceType> setServiceType(ServiceType type);
     
-    ArrayList<ServiceType> selectServiceType_null();
+    List<ServiceType> removeServiceType(int id);
     
-    ArrayList<ServiceSubtype> selectServiceSubtype_null();
+    List<ServiceType> updateServiceType(ServiceType type);
+    
+    List<ServiceSubtype> setServiceSubtype (ServiceSubtype subtype); 
+    
+    List<ServiceSubtype> updateServiceSubtype (ServiceSubtype subtype);
+    
+    List<ServiceSubtype> removeServiceSubtype (int id);
+    
+    List<PriceList> setPriceList (PriceList priceList);
+    
+    List<PriceList> updatePriceList (PriceList priceList);
+    
+    List<PriceList> removePriceList (int id);
 
     ArrayList<PaymentType> selectPaymentType_null();
     
     ArrayList<PaymentMethod> selectPaymentMethod_null();
-
 }
